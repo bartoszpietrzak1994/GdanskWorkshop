@@ -19,3 +19,15 @@ services:
     App\Ui\Menu\AdminMenuListener:
         tags:
             - { name: kernel.event_listener, event: sylius.menu.admin.main, method: __invoke }
+
+    App\Creator\ProductScarcityCreator:
+        arguments:
+            - '@doctrine.orm.default_entity_manager'
+
+    App\EventListener\DoctrineEventListener:
+        arguments:
+            - '@App\Creator\ProductScarcityCreator'
+            - '@sylius.availability_checker.default'
+        tags:
+            - { name: doctrine.event_listener, event: postPersist }
+            - { name: doctrine.event_listener, event: postUpdate }
