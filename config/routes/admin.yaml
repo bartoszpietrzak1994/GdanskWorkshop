@@ -1,0 +1,9 @@
+app_product_scarcity:
+    resource: |
+        alias: app.product_scarcity
+        section: admin
+        templates: SyliusAdminBundle:Crud
+        only: ['index', 'delete']
+        grid: app_product_scarcity
+        permission: true
+    type: sylius.resource
