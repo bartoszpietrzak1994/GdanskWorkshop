@@ -1,0 +1,7 @@
+app:
+    ui:
+        product_scarcity: 'Product scarcity'
+        product_scarcities: 'Product scarcities'
+        product_variant: 'Product variant'
+        quantity_left: 'Quantity left'
+        since: 'Since'
