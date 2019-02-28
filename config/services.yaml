@@ -31,3 +31,9 @@ services:
         tags:
             - { name: doctrine.event_listener, event: postPersist }
             - { name: doctrine.event_listener, event: postUpdate }
+
+    App\Controller\ProductScarcityShowAction:
+        arguments:
+            - '@app.repository.product_scarcity'
+            - '@twig'
+        public: true

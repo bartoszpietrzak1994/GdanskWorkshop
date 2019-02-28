@@ -1,0 +1,13 @@
+<h1 class="ui header">
+    <i class="circular inbox icon"></i>
+    <div class="content">
+        {{ 'app.ui.product_scarcity'|trans ~ ' for variant: ' }} {{ productScarcity.productVariantName }}
+        <div class="sub header">
+            <div class="ui horizontal divided list">
+                <div class="item">
+                    {{ 'app.ui.since'|trans }}: <span id="product-scarcity-since">{{ productScarcity.since|format_datetime }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</h1>
