@@ -13,3 +13,15 @@ app_admin_product_scarcity_show:
     methods: [GET]
     defaults:
         _controller: 'App\Controller\ProductScarcityShowAction'
+
+app_admin_product_scarcity_fulfil:
+    path: /product-scarcity/{id}/fulfil
+    methods: [PUT]
+    defaults:
+        _controller: app.controller.product_scarcity:applyStateMachineTransitionAction
+        _sylius:
+            permission: true
+            state_machine:
+                graph: app_product_scarcity
+                transition: fulfil
+            redirect: referer

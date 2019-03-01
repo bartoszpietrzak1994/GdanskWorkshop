@@ -1,0 +1,13 @@
+winzou_state_machine:
+    app_product_scarcity:
+        class: "%app.model.product_scarcity.class%"
+        property_path: status
+        graph: app_product_scarcity
+        state_machine_class: "%sylius.state_machine.class%"
+        states:
+            new: ~
+            fulfilled: ~
+        transitions:
+            fulfil:
+                from: [new]
+                to: fulfilled

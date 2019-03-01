@@ -18,6 +18,9 @@ sylius_grid:
                 since:
                     type: datetime
                     label: app.ui.since
+                status:
+                    type: string
+                    label: sylius.ui.status
             filters:
                 quantity_left:
                     type: string
@@ -28,9 +31,20 @@ sylius_grid:
                 since:
                     type: date
                     label: app.ui.since
+                status:
+                    type: string
+                    label: sylius.ui.status
             actions:
                 item:
-                   show:
-                        type: show
-                   delete:
-                       type: delete
+                    fulfil:
+                        type: apply_transition
+                        label: sylius.ui.accept
+                        icon: checkmark
+                        options:
+                            link:
+                                route: app_admin_product_scarcity_fulfil
+                                parameters:
+                                    id: resource.id
+                            class: green
+                            transition: fulfil
+                            graph: app_product_scarcity

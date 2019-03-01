@@ -43,9 +43,17 @@ final class ProductScarcity implements ResourceInterface
      */
     private $since;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string")
+     */
+    private $status;
+
     public function __construct()
     {
         $this->since = new \DateTimeImmutable();
+        $this->status = 'new';
     }
 
     public function getId(): ?int
@@ -81,5 +89,21 @@ final class ProductScarcity implements ResourceInterface
     public function getSince(): \DateTimeInterface
     {
         return $this->since;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStatus(): string
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param string $status
+     */
+    public function setStatus(string $status): void
+    {
+        $this->status = $status;
     }
 }
