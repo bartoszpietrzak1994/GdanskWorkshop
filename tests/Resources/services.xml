@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id="App\Tests\Context\ManagingProductScarcityContext" public="true">
+            <argument type="service" id="App\Tests\Page\ProductScarcity\IndexPageInterface" />
+            <argument type="service" id="App\Tests\Page\ProductScarcity\ShowPageInterface" />
+            <argument type="service" id="app.repository.product_scarcity" />
+        </service>
+
+        <service id="App\Tests\Page\ProductScarcity\IndexPageInterface"
+                 class="App\Tests\Page\ProductScarcity\IndexPage"
+                 parent="sylius.behat.page.admin.crud.index"
+                 public="true"
+        >
+            <argument type="string">app_admin_product_scarcity_index</argument>
+        </service>
+
+        <service id="App\Tests\Page\ProductScarcity\ShowPageInterface"
+                 class="App\Tests\Page\ProductScarcity\ShowPage"
+                 parent="sylius.behat.symfony_page"
+                 public="true"
+        />
+    </services>
+</container>

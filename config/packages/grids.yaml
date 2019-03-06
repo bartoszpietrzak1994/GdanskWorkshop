@@ -1,0 +1,50 @@
+sylius_grid:
+    grids:
+        app_product_scarcity:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: "%app.model.product_scarcity.class%"
+            fields:
+                id:
+                    type: string
+                    label: sylius.ui.id
+                quantity_left:
+                    type: string
+                    label: app.ui.quantity_left
+                product_variant_name:
+                    type: string
+                    label: sylius.ui.name
+                since:
+                    type: datetime
+                    label: app.ui.since
+                status:
+                    type: string
+                    label: sylius.ui.status
+            filters:
+                quantity_left:
+                    type: string
+                    label: app.ui.quantity_left
+                product_variant_name:
+                    type: string
+                    label: app.ui.product_variant
+                since:
+                    type: date
+                    label: app.ui.since
+                status:
+                    type: string
+                    label: sylius.ui.status
+            actions:
+                item:
+                    fulfil:
+                        type: apply_transition
+                        label: sylius.ui.accept
+                        icon: checkmark
+                        options:
+                            link:
+                                route: app_admin_product_scarcity_fulfil
+                                parameters:
+                                    id: resource.id
+                            class: green
+                            transition: fulfil
+                            graph: app_product_scarcity

@@ -1,0 +1,40 @@
+{% extends '@SyliusAdmin/layout.html.twig' %}
+
+{% block title %}{{ 'app.ui.product_scarcity'|trans ~ ' ' ~ productScarcity.id }} {{ parent() }}{% endblock %}
+
+{% block content %}
+    <div class="ui stackable two column grid">
+        <div class="ten wide column">
+            {% include 'ProductScarcity/Show/_header.html.twig' %}
+        </div>
+    </div>
+
+    {% include 'ProductScarcity/Show/_breadcrumb.html.twig' %}
+
+    <div class="ui stackable segment grid">
+        <div class="twelve wide column">
+            <table class="ui celled compact small table fixed">
+                <thead>
+                <tr>
+                    <th class="four wide sylius-table-column-name">{{ 'app.ui.product_variant'|trans }}</th>
+                    <th class="four wide sylius-table-column-code">{{ 'app.ui.quantity_left'|trans }}</th>
+                    <th class="four wide sylius-table-column-code">{{ 'app.ui.since'|trans }}</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="single line line-item-name">
+                            {{ productScarcity.productVariantName }}
+                        </td>
+                        <td class="single line line-item-name" id="item-quantity">
+                            {{ productScarcity.quantityLeft }}
+                        </td>
+                        <td class="single line line-item-name">
+                            {{ productScarcity.since|format_datetime }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
